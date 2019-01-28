@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#define BUFFER_SIZE 65536
+#define BUFFER_SIZE 32768
 
 #define LMIN 4
 #define LMAX 32767
