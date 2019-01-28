@@ -10,7 +10,7 @@
 
 #include "memz.h"
 
-int main(void){
+int main(){
 	int argc;
 	LPWSTR *argv = CommandLineToArgvW(GetCommandLineW(), &argc);
 
