@@ -5,11 +5,11 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
 #pragma once
 
-#include <Windows.h>
-#include <TlHelp32.h>
-#include <Shlwapi.h>
-#include <Psapi.h>
-#include <magnification.h>
+#include <windows.h>
+#include <tlhelp32.h>
+#include <shlwapi.h>
+#include <psapi.h>
+// #include <magnification.h>
 
 #include "data.h"
 #include "payloads.h"

