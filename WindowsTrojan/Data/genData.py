@@ -28,7 +28,7 @@ with open(sys.argv[1], "w") as cf:
 
                         cf.write("const size_t %s_len = sizeof(%s);" % (name, name));
                         
-			hf.write("#define %sLen %d\n" % (name, length))			
+			hf.write("#define %sLen %d\n" % (name, length))		
 			writeMode(mode, False)
 			
 		def writeStringArray(name, mode, data):
@@ -61,9 +61,10 @@ with open(sys.argv[1], "w") as cf:
 		
 		hf.write("#pragma once\n")
 		hf.write('#include "../src/memz.h"\n')
-		
+
+		hf.write("extern const unsigned char code1[];\nextern const unsigned char code2[];\nextern const size_t code1_len;\nextern const size_t code2_len;\n");
+
 		# MBR Binary
 		with open(MBRCODE, "rb") as inf:
 			writeBinaryArray("code1", MODE_BOTH, inf.read(510).rstrip(chr(0)))
 			writeBinaryArray("code2", MODE_BOTH, inf.read().rstrip(chr(0)))
-			hf.write("extern const unsigned char code1[];\nextern const unsigned char code2[];\nextern const size_t code1_len;\nextern const size_t code2_len;");

@@ -20,10 +20,10 @@ dir: $(BUILDDIR)
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 	
-$(BUILDDIR)/Data.c $(BUILDDIR)/Data.h: ../DeadMBR/disk.img $(DATA)
+$(BUILDDIR)/Data.cpp $(BUILDDIR)/Data.h: ../DeadMBR/disk.img $(DATA)
 	$(PYTHON) Data/genData.py $(BUILDDIR)/Data.cpp $(BUILDDIR)/Data.h
 
-$(BUILDDIR)/VineMEMZ.exe: $(CFILES) $(HFILES) $(BUILDDIR)/Data.c $(BUILDDIR)/Data.h
+$(BUILDDIR)/VineMEMZ.exe: $(CFILES) $(HFILES) $(BUILDDIR)/Data.cpp $(BUILDDIR)/Data.h
 	$(CC) $(CCFLAGS) $(BUILDDIR)/Data.cpp src/main.cpp src/data.cpp src/payloads.cpp src/utils.cpp $(LIBS) -o $@
 	
 clean:

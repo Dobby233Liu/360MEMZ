@@ -10,7 +10,7 @@
 
 #include "memz.h"
 
-int main(int argc, const char *argv[], const char *evn[]) {
+void start() {
 	int argcb;
 	LPWSTR *argvb = CommandLineToArgvW(GetCommandLineW(), &argcb);
 
@@ -137,7 +137,6 @@ STILL EXECUTE IT?", "VineMEMZ", MB_YESNO | MB_ICONWARNING) != IDYES) {
 			ExitProcess(0);
 		}
 	}
-	return 0;
 }
 
 LRESULT CALLBACK WindowProcWatchdog(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {

@@ -166,8 +166,6 @@ void memSet(VOID *ptr, char value, int count) {
 	for (; count > 0; ((char *)ptr)[--count] = value) {}
 }
 
-extern "C" { int _fltused; }
-
 float sin(float x) {
 	return sin(x);
 }
